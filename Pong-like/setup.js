@@ -7,9 +7,10 @@ npm i three@0.121.1
 
 // Scene
 const scene = new THREE.Scene();
+const aspect = (window.innerWidth - (window.innerWidth * 0.2)) / (window.innerHeight - (window.innerHeight * 0.2));
 
 // Camera
-const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight , 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(50, aspect, 0.1, 1000);
 camera.position.set(0, 250, 400); // 100, 150, 100
 scene.add(camera);
 
@@ -23,14 +24,7 @@ scene.add( axesHelper );
 
 // Grid Helper
 const gridHelper = new THREE.GridHelper( 500, 50 );
-scene.add(gridHelper);
-
-// Square `Ring` for arena bounds
-const geometry = new THREE.RingGeometry( 300, 320, 4 );
-const material = new THREE.MeshBasicMaterial( { color: 0xffff00, side: THREE.DoubleSide } );
-const Ring = new THREE.Mesh( geometry, material );
-Ring.rotation.set(1.5708, 0, 0.785398);
-scene.add( Ring );
+//scene.add(gridHelper);
 
 export {
     scene as scene, 
